@@ -4,17 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
-class Employee extends Model
+
+class Student extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens ;
 
     protected $fillable = [
         'name',
         'email',
-        'phone_no',
-        'age',
-        'gender'
+        'phone',
+        'password'
     ];
 
     // no timestamps

@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Project extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'email',
-        'phone_no',
-        'age',
-        'gender'
+        'student_id',
+        'discription',
+        'duration'
     ];
 
-    // no timestamps
     public $timestamps = false;
 }
