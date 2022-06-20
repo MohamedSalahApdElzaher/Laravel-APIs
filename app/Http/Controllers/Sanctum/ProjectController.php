@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class ProjectController extends Controller
 {
     /**
-     * ALL APIs NEED AUTHENTICATION
+     *  ALL APIs NEED AUTHENTICATION
      */
 
     // CREATE API
@@ -79,6 +79,37 @@ class ProjectController extends Controller
             ], 404);
         }
        
+    }
+
+    // UPDATE PROJECT API
+    public function updateProject(Request $request, $id){
+       $student_id = auth()->user()->id;
+       if(Project::where([
+           'student_id' => $student_id,
+           'id' => $id
+       ])->exists()){
+
+        Project::where([
+            'student_id' => $student_id,
+            'id' => $id
+        ])->update([
+            'name' =>  $request->name,
+            'discription' =>  $request->discription  ,
+            'duration' => $request->duration 
+        ]);
+
+        return response()->json([
+            'status' => 1,
+            'message' => 'project updated successfully',
+        ], 200);
+
+       }
+       else{
+           return response()->json([
+              'status' => 0,
+              'message' => 'project not found'
+           ], 404);
+       }
     }
 
     // DELETE API

@@ -12,9 +12,20 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    
+
+    /// for sanctum usage
+
+    // 'defaults' => [
+    //     'guard' => 'web',
+    //     'passwords' => 'users',
+    // ],
+
+
+     /// for jwt usage
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -35,10 +46,28 @@ return [
     |
     */
 
+
+    /// for sanctum usage 
+
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    // ],
+
+
+    /// for jwt usage
+
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
         ],
     ],
 

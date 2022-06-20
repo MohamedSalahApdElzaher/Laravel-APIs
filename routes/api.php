@@ -45,16 +45,19 @@ Route::post('login', [StudentController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
-    // for student model
-
+    /**
+     *   for student model
+    */
     Route::get('profile', [StudentController::class, 'profile']);
     Route::get('logout', [StudentController::class, 'logout']);
 
-    // for project model
-
+    /**
+     *   for project model
+    */
     Route::post('create-project', [ProjectController::class, 'createProject']);
     Route::get('list-project', [ProjectController::class, 'listProject']);
     Route::get('single-project/{id}', [ProjectController::class, 'singleProject']);
+    Route::put('update-project/{id}', [ProjectController::class, 'updateProject']);
     Route::delete('delete-project/{id}', [ProjectController::class, 'delete']);
 
 });

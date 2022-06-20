@@ -26,8 +26,8 @@ class StudentController extends Controller
 
          $student->name = $request->name;
          $student->email = $request->email;
-         $student->password = Hash::make($request->password);
-         $student->phone = isset($request->phone) ? $request->phone : "";
+         $student->password = Hash::make($request->password); // hash password
+         $student->phone = isset($request->phone) ? $request->phone : ""; // optional
 
          $student->save();
 
@@ -56,7 +56,10 @@ class StudentController extends Controller
                 return response()->json([
                     'status' => 1,
                     'message' => 'Student logged successfully',
-                    'token' => $token
+                    'data' => [
+                        'student'=> $student,
+                        'token' => $token
+                    ] 
                 ]);
 
             }else{
@@ -84,14 +87,14 @@ class StudentController extends Controller
         return response()->json([
             'status' => 1,
             'message' => 'Student profile information',
-            'data' => auth()->user()
+            'data' => auth()->user()  // must be authenticated
         ]);
     }
 
     // LOGOUT API
     public function logout()
     {
-         auth()->user()->tokens()->delete();
+         auth()->user()->tokens()->delete(); // delete user token
          return response()->json([
             'status' => 1,
             'message' => 'Student logout successfullay',
