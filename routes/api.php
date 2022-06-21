@@ -3,6 +3,8 @@
 use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\Sanctum\ProjectController;
 use App\Http\Controllers\Sanctum\StudentController;
+use App\Http\Controllers\JWT\UserController;
+use App\Http\Controllers\JWT\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -61,4 +63,28 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('delete-project/{id}', [ProjectController::class, 'delete']);
 
 });
+
+
+// JWT APIs ENDPOINTS (NO AUHTNTICATION NEEDED)
+
+Route::post('user/register', [UserController::class, 'register']);
+Route::post('user/login', [UserController::class, 'login']);
+
+
+// JWT APIs ENDPOINTS (AUHTNTICATION NEEDED)
+
+Route::group(['middleware' => ['auth:api']], function(){
+
+    Route::get('user/profile', [UserController::class, 'profile']);
+    Route::put('user/update', [UserController::class, 'update']);
+    Route::get('user/logout', [UserController::class, 'logout']);
+
+    // FOR Course API
+
+    Route::post('course/create', [CourseController::class, 'courseEnrollment']);
+    Route::get('total-courses', [CourseController::class, 'totalCourses']);
+    Route::get('course/delete/{id}', [CourseController::class, 'deleteCourse']);
+
+});
+
 
