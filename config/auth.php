@@ -12,7 +12,7 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-    
+
 
     /// for sanctum usage
 
@@ -47,7 +47,7 @@ return [
     */
 
 
-    /// for sanctum usage 
+    /// for sanctum usage
 
     // 'guards' => [
     //     'web' => [
@@ -64,11 +64,23 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        // for JWT
+
+//        'api' => [
+//            'driver' => 'jwt',
+//            'provider' => 'users',
+//            'hash' => false,
+//        ],
+
+    // for Passport
+
         'api' => [
-            'driver' => 'jwt',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
+
     ],
 
     /*
@@ -91,7 +103,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Author::class,
         ],
 
         // 'users' => [

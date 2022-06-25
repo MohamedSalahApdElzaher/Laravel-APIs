@@ -7,6 +7,7 @@ use App\Http\Controllers\JWT\UserController;
 use App\Http\Controllers\JWT\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\PASSPORT\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,11 +66,11 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 });
 
 
+
 // JWT APIs ENDPOINTS (NO AUHTNTICATION NEEDED)
 
 Route::post('user/register', [UserController::class, 'register']);
 Route::post('user/login', [UserController::class, 'login']);
-
 
 // JWT APIs ENDPOINTS (AUHTNTICATION NEEDED)
 
@@ -88,3 +89,17 @@ Route::group(['middleware' => ['auth:api']], function(){
 });
 
 
+// PASSPORT APIs ENDPOINTS
+
+Route::post('author/register', [AuthorController::class, "register"]);
+Route::post('author/login', [AuthorController::class, "login"]);
+
+Route::group(["middleware" => ["auth:api"]], function(){
+    Route::get("profile", [AuthorController::class, "profile"]);
+    Route::post("logout", [AuthorController::class, "logout"]);
+
+    Route::post('create/blog', [\App\Http\Controllers\PASSPORT\BlogController::class, 'createBlog']);
+    Route::get('list/blogs', [\App\Http\Controllers\PASSPORT\BlogController::class, 'listBlogs']);
+    Route::get('get/blog/{id}', [\App\Http\Controllers\PASSPORT\BlogController::class, 'getBlog']);
+
+});
