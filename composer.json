@@ -12,6 +12,7 @@
         "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
+        "twilio/sdk": "^6.38",
         "tymon/jwt-auth": "*"
     },
     "require-dev": {

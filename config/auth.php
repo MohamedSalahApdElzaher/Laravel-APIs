@@ -67,19 +67,19 @@ return [
 
         // for JWT
 
-//        'api' => [
-//            'driver' => 'jwt',
-//            'provider' => 'users',
-//            'hash' => false,
-//        ],
-
-    // for Passport
-
         'api' => [
-            'driver' => 'passport',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
+
+    // for Passport
+
+//        'api' => [
+//            'driver' => 'passport',
+//            'provider' => 'users',
+//            'hash' => false,
+//        ],
 
     ],
 
@@ -103,7 +103,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Author::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

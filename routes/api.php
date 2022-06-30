@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 Route::post('user/register', [UserController::class, 'register']);
 Route::post('user/login', [UserController::class, 'login']);
+Route::post('user/verify', [UserController::class, 'verify']);
+
 
 // JWT APIs ENDPOINTS (AUHTNTICATION NEEDED)
 
