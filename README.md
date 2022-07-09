@@ -1,7 +1,7 @@
 # Laravel APIs
 ## Developed APIs for different purposes included:
 
-1. **Authentication (Register - signin)**
+1. **Authentication (Register - signin - logout - profile ..etc)**
 2. **Verification (SMS phone number using Twilio API)**
 1. **CRUD Operations**
 
