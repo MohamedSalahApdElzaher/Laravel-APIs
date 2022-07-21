@@ -13,4 +13,4 @@
 - **JWT API (AUTH & CRUD)**
 -  **PASSPORT API (AUTH & CRUD)**
 
-##  Using Twilio API for verifying phone numbers via SMS
+##  Using Twilio API for verifying phone numbers via SMS 
